@@ -10,6 +10,7 @@ private:
 	string _name;
 	char _character;
 
+	int strength;
 
 };
 
