@@ -2,3 +2,11 @@
 *.user
 /.vs/RoguelikeProbably/v16/Browse.VC.db
 /.vs/RoguelikeProbably/v16/Browse.VC.opendb
+*.ipch
+*.exe
+*.ilk
+*.pdb
+*.tlog
+*.obj
+*.log
+*.idb
