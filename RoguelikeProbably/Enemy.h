@@ -8,9 +8,11 @@ class Enemy : public IAutonymousActor
 {
 private:
 	string _name;
-	char _character;
+	char _icon;
 
 	int strength;
+	int constitution;
+	int dexterity;
 
 };
 
