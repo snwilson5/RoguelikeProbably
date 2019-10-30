@@ -123,15 +123,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameObjectCollections.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="ItemPanel.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="PanelObject.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameObjectCollections.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="IAutonymousActor.h" />
+    <ClInclude Include="ItemPanel.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="PanelObject.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

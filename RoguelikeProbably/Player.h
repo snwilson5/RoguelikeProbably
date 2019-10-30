@@ -1,5 +1,9 @@
 #pragma once
-class Player
+#include "PanelObject.h";
+
+class Player:PanelObject
 {
+public:
+		Player();
 };
 

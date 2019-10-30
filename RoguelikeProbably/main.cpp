@@ -12,7 +12,8 @@ int main()
 	while (true)
 	{
 		Repaint();
-		KeyDetection();
+		KeyDetection();//Player Action
+
 	}
 }
 

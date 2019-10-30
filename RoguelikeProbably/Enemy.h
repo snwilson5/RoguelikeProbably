@@ -1,10 +1,12 @@
 #pragma once
 #include <string>
 #include "IAutonymousActor.h"
+#include "PanelObject.h";
+
 using namespace std;
 
 
-class Enemy : public IAutonymousActor
+class Enemy : public IAutonymousActor, PanelObject
 {
 private:
 	string _name;
@@ -13,6 +15,11 @@ private:
 	int strength;
 	int constitution;
 	int dexterity;
+
+public:
+	Enemy(int xPos, int yPos, char icon);
+
+	void TakeAction();
 
 };
 
