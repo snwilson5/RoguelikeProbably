@@ -1,6 +1,8 @@
 #include <iostream>
 #include <windows.h>
 #include <winuser.h>
+#include "Map.h"
+#include "TestMaps.cpp"
 using namespace std;
 
 void KeyDetection();
@@ -8,6 +10,10 @@ void Repaint();
 
 int main()
 {
+	Map testMap(TestMaps::testMap1());
+
+
+
 	cout << "Hello";
 	while (true)
 	{

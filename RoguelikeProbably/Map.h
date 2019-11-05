@@ -15,13 +15,12 @@ class Map
 	enum CellType {floor, door, item, enemy, player, wall};
 
 private:
-	char** map;
+	string map[20];//Shoot for 30x20
 public:
-	void LoadMap(char**, int lenX, int lenY);
+	Map(string[20]);
 	void GetCellType(int x, int y) const;
 	void AddToLocation(CellType type, char specificCharacter, int x, int y);
-
-	string GetMap();
+	string GetMapOutput();
 
 };
 

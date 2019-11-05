@@ -1,6 +1,6 @@
 #include "Map.h"
 
-void Map::LoadMap(char**, int lenX, int lenY)
+Map::Map(string[20])
 {
 }
 
@@ -12,7 +12,7 @@ void Map::AddToLocation(CellType type, char specificCharacter, int x, int y)
 {
 }
 
-string Map::GetMap()
+string Map::GetMapOutput()
 {
 	return string();
 }
