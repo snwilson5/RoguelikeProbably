@@ -1,6 +1,6 @@
 #pragma once
 #include "PanelObject.h";
-class ItemPanel:PanelObject
+class ItemPanel:public PanelObject
 {
 
 public:

@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+
 //This Class is the container for the map ex:
 /*
 #####
@@ -12,15 +13,26 @@ using namespace std;
 */
 class Map
 {
+
+public://These are unique in that they are statically accessable
+
 	enum CellType {floor, door, item, enemy, player, wall};
+	static const int MaxMapLength = 20;
+	//This seems to be an oddity. Adding an extra space so that the map screen height and width "match"
+	static const int MaxMapWidth = 60;//Extra character for new line character \n 
 
 private:
-	string map[20];//Shoot for 30x20
-public:
-	Map(string[20]);
-	void GetCellType(int x, int y) const;
-	void AddToLocation(CellType type, char specificCharacter, int x, int y);
-	string GetMapOutput();
+	string map;//Shoot for 30x20
+	string roundMap;
 
+	int ConvertXYToActualStringPosition(int,int) const;
+	CellType GetCellType(char) const;
+	
+public:
+	Map(string);
+	void AddToLocation(char specificCharacter, int x, int y);
+	string GetMapOutput();
+	CellType GetCellType(int x, int y) const;
+	void RefreshMap();
 };
 

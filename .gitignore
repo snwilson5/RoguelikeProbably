@@ -12,3 +12,4 @@
 *.idb
 *.json
 *.sqlite
+*.enc
