@@ -6,8 +6,6 @@ class Player:public PanelObject
 public:
 		Player();
 		Player(int, int);
-		void MoveVertically(int);
-		void MoveHorizontally(int);
-
+		void Move(int x, int y);
 };
 
