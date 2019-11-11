@@ -4,30 +4,36 @@
 #include "Map.h"
 #include "TestMaps.cpp"
 #include "Player.h"
-
-
+#include "GameObjectCollections.h"
 using namespace std;
+
+#pragma region Method stubs
 
 void KeyDetection();
 void Repaint();
 void PlayerArrowsPressed(int, int);
 void CharacterPrint();
+#pragma endregion
 
 static Map globalMap = Map(TestMaps::testMap1());
 static string messages = "";
 
-static Player character;
+static Player character(2,12);
+static GameObjectCollections gameObjects;
 
 int main()
 {
 	//CharacterPrint();
-	globalMap = Map(TestMaps::testMap1());
+	//char c176 = (char)176;
+	//return 0;
+	globalMap = Map(TestMaps::testMap2());
 	globalMap.AddToLocation(character.GetIcon(), character.GetXPos(), character.GetYPos());
 
 	while (true)
 	{
 		Repaint();
 		KeyDetection();//Player Action
+		gameObjects.GiveAllActions();
 	}
 }
 
@@ -109,6 +115,10 @@ void PlayerArrowsPressed(int x, int y)
 
 	case Map::wall:
 		messages += "A Wall blocks your path.\n";
+		break;
+
+	case Map::theVoid:
+		messages += "You would fall into an endless void.\n";
 		break;
 	}
 }

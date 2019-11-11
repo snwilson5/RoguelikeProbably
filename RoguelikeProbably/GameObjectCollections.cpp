@@ -17,3 +17,7 @@ void GameObjectCollections::RemoveEnemy(Enemy* enemy)
 void GameObjectCollections::RemoveItem(ItemPanel* itemPanel)
 {
 }
+
+void GameObjectCollections::GiveAllActions()
+{
+}

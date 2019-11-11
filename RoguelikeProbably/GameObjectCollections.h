@@ -26,5 +26,7 @@ public:
 
 	void RemoveEnemy(Enemy* enemy);
 	void RemoveItem(ItemPanel* itemPanel);
+
+	void GiveAllActions();
 };
 

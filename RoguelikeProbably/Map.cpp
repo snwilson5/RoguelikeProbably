@@ -44,6 +44,8 @@ Map::CellType Map::GetCellType(char c) const
 		return Map::player;
 	case '#':
 		return Map::wall;
+	case '°':
+		return Map::theVoid;
 	default:
 		return Map::floor;
 	}
