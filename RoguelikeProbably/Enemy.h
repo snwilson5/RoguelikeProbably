@@ -6,7 +6,7 @@
 using namespace std;
 
 
-class Enemy : public IAutonymousActor, PanelObject
+class Enemy : public IAutonymousActor, public PanelObject
 {
 private:
 	string _name;

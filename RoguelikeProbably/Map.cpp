@@ -16,6 +16,10 @@ Map::Map(string inMap)
 	RefreshMap();
 }
 
+Map::Map()
+{
+}
+
 Map::CellType Map::GetCellType(int x, int y) const
 {
 	int actualPosition = Map::ConvertXYToActualStringPosition(x, y);

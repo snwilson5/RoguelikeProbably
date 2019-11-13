@@ -30,6 +30,7 @@ private:
 	
 public:
 	Map(string);
+	Map();
 	void AddToLocation(char specificCharacter, int x, int y);
 	string GetMapOutput();
 	CellType GetCellType(int x, int y) const;

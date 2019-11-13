@@ -1,7 +1,7 @@
+#pragma once
 #include <iostream>
 #include <windows.h>
 #include <winuser.h>
-#include "Map.h"
 #include "TestMaps.cpp"
 #include "Player.h"
 #include "GameObjectCollections.h"
@@ -15,25 +15,22 @@ void PlayerArrowsPressed(int, int);
 void CharacterPrint();
 #pragma endregion
 
-static Map globalMap = Map(TestMaps::testMap1());
-static string messages = "";
 
-static Player character(2,12);
-static GameObjectCollections gameObjects;
+static GameObjectCollections* gameObjects = GameObjectCollections::GetInstance();
 
 int main()
 {
 	//CharacterPrint();
 	//char c176 = (char)176;
 	//return 0;
-	globalMap = Map(TestMaps::testMap2());
-	globalMap.AddToLocation(character.GetIcon(), character.GetXPos(), character.GetYPos());
+	gameObjects->globalMap = Map(TestMaps::testMap2());
+	gameObjects->PaintPlayer();
 
 	while (true)
 	{
 		Repaint();
 		KeyDetection();//Player Action
-		gameObjects.GiveAllActions();
+		gameObjects->GiveAllActions();//Everything Else
 	}
 }
 
@@ -70,39 +67,39 @@ void KeyDetection()
 			bPressed = true;
 		}
 	}
-	globalMap.AddToLocation(character.GetIcon(), character.GetXPos(), character.GetYPos());
+	gameObjects->PaintPlayer();
 }
 
 void Repaint()
 {
 	system("cls");
-	cout << globalMap.GetMapOutput();
+	cout << gameObjects->globalMap.GetMapOutput();
 	//cout<<character.getCharacteristicsOutput()<<endl;
-	cout << messages;
-	globalMap.RefreshMap();
-	messages = "";
+	cout << gameObjects->GetMessages();
+	gameObjects->globalMap.RefreshMap();
+	gameObjects->ClearMessages();
 	Sleep(100);//This was processing too quickly and detecting the same key press multiple times. Slowed it for 1/10th of a second
 }
 
 void PlayerArrowsPressed(int x, int y)
 {
-	Map::CellType type = globalMap.GetCellType(character.GetXPos() + x, character.GetYPos() - y);
+	Map::CellType type = gameObjects->globalMap.GetCellType(gameObjects->character.GetXPos() + x, gameObjects->character.GetYPos() - y);
 	//floor, door, item, enemy, player, wall
 	switch (type)
 	{
 	case Map::floor:
 		//Move
-		character.Move(x, y);
+		gameObjects->character.Move(x, y);
 		break;
 
 	case Map::door:
 		//Move for now. This will be 2 turns. Open the door and then go through the door.
-		character.Move(x, y);
+		gameObjects->character.Move(x, y);
 		break;
 
 	case Map::item:
 		//move
-		character.Move(x, y);
+		gameObjects->character.Move(x, y);
 		break;
 
 	case Map::enemy:
@@ -114,11 +111,11 @@ void PlayerArrowsPressed(int x, int y)
 		break;
 
 	case Map::wall:
-		messages += "A Wall blocks your path.\n";
+		gameObjects->AddMessage("A Wall blocks your path.\n");
 		break;
 
 	case Map::theVoid:
-		messages += "You would fall into an endless void.\n";
+		gameObjects->AddMessage("You would fall into an endless void.\n");
 		break;
 	}
 }
