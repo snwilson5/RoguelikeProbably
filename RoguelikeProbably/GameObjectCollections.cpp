@@ -64,3 +64,9 @@ void GameObjectCollections::ClearMessages()
 {
 	_messages = "";
 }
+
+//sounded fun messing around with generics, but i might just change this to seperate Get Methods.
+template<class myType> myType GameObjectCollections::GetObjectAtPosition(int, int)
+{
+	return myType();
+}

@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "Map.h"
 #include "Player.h"
+#include "Door.h"
 using namespace std;
 
 //This class manages all current
@@ -12,6 +13,7 @@ class GameObjectCollections
 private:
 	vector<Enemy> _enemies; //Enemies on screen
 	vector<ItemPanel> _items; //Items on screen
+	vector<Door> _doors;
 	static GameObjectCollections* instance;
 	GameObjectCollections();
 	string _messages;
@@ -39,5 +41,10 @@ public:
 	void AddMessage(string);
 	string GetMessages() const;
 	void ClearMessages();
+
+
+	template<class myType>
+	myType GetObjectAtPosition(int, int);
+
 };
 

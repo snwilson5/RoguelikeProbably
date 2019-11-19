@@ -8,7 +8,6 @@
 using namespace std;
 
 #pragma region Method stubs
-
 void KeyDetection();
 void Repaint();
 void PlayerArrowsPressed(int, int);
@@ -21,7 +20,7 @@ static GameObjectCollections* gameObjects = GameObjectCollections::GetInstance()
 int main()
 {
 	//CharacterPrint();
-	//char c176 = (char)176;
+	//char c239 = (char)239;
 	//return 0;
 	gameObjects->globalMap = Map(TestMaps::testMap2());
 	gameObjects->PaintPlayer();
@@ -83,17 +82,20 @@ void Repaint()
 
 void PlayerArrowsPressed(int x, int y)
 {
-	Map::CellType type = gameObjects->globalMap.GetCellType(gameObjects->character.GetXPos() + x, gameObjects->character.GetYPos() - y);
+	int intendedX = gameObjects->character.GetXPos() + x;
+	int intendedY = gameObjects->character.GetYPos() - y;
+	Map::CellType type = gameObjects->globalMap.GetCellType(intendedX, intendedY);
 	//floor, door, item, enemy, player, wall
 	switch (type)
 	{
 	case Map::floor:
+	case Map::openDoor:
 		//Move
 		gameObjects->character.Move(x, y);
 		break;
 
-	case Map::door:
-		//Move for now. This will be 2 turns. Open the door and then go through the door.
+	case Map::closedDoor:
+		//Open the door
 		gameObjects->character.Move(x, y);
 		break;
 

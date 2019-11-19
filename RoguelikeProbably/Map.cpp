@@ -50,6 +50,10 @@ Map::CellType Map::GetCellType(char c) const
 		return Map::wall;
 	case '°':
 		return Map::theVoid;
+	case '?':
+		return Map::closedDoor;
+	case 'ï':
+		return Map::openDoor;
 	default:
 		return Map::floor;
 	}
