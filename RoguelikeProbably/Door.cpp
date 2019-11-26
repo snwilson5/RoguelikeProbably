@@ -8,5 +8,5 @@ Door::Door(int x, int y, bool bOpen) :PanelObject(x, y, bOpen ? 'ï' : '?')
 void Door::OpenDoor()
 {
 	_open = true;
-	_icon = '/';
+	_icon = 'ï';
 }

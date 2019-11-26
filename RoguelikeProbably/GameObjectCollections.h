@@ -28,12 +28,15 @@ public:
 			instance = new GameObjectCollections();
 		return instance;
 	}
+	Map::CellType GetCellType(int x, int y);
     
 	void AddActor(Enemy enemy);
 	void AddItem(ItemPanel item);
+	void AddDoor(Door door);
 
 	void RemoveEnemy(Enemy* enemy);
 	void RemoveItem(ItemPanel* itemPanel);
+	void RemoveDoor(Door* door);
 
 	void GiveAllActions();
 	void PaintPlayer();
@@ -42,9 +45,9 @@ public:
 	string GetMessages() const;
 	void ClearMessages();
 
+	Door* GetDoorAtPosition(int, int);
 
-	template<class myType>
-	myType GetObjectAtPosition(int, int);
+	//template<class myType>	myType* GetObjectAtPosition(int, int);
 
 };
 

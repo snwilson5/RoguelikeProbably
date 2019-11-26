@@ -8,6 +8,42 @@ GameObjectCollections::GameObjectCollections()
 	//TODO
 }
 
+Map::CellType GameObjectCollections::GetCellType(int x, int y)
+{
+	Map::CellType highestType = globalMap.GetCellType(x, y);//<- Get the default
+
+	for (int i = 0; i < _enemies.size(); i++)
+	{
+		if (x == _enemies[i].GetXPos() && y == _enemies[i].GetYPos())
+		{
+			Map::CellType tempType = globalMap.GetCellType(_enemies[i].GetIcon());
+			if ((int)highestType < (int)tempType)
+				highestType = tempType;
+		}
+	}
+
+	for (int i = 0; i < _items.size(); i++)
+	{
+		if (x == _items[i].GetXPos() && y == _items[i].GetYPos())
+		{
+			Map::CellType tempType = globalMap.GetCellType(_items[i].GetIcon());
+			if ((int)highestType < (int)tempType)
+				highestType = tempType;
+		}
+	}
+
+	for (int i = 0; i < _doors.size(); i++)
+	{
+		if (x == _doors[i].GetXPos() && y == _doors[i].GetYPos())
+		{
+			Map::CellType tempType = globalMap.GetCellType(_doors[i].GetIcon());
+			if ((int)highestType < (int)tempType)
+				highestType = tempType;
+		}
+	}
+	return highestType;
+}
+
 void GameObjectCollections::AddActor(Enemy enemy)
 {
 	_enemies.push_back(enemy);
@@ -18,6 +54,11 @@ void GameObjectCollections::AddItem(ItemPanel item)
 	_items.push_back(item);
 }
 
+void GameObjectCollections::AddDoor(Door door)
+{
+	_doors.push_back(door);
+}
+
 void GameObjectCollections::RemoveEnemy(Enemy* enemy)
 {
 	//TODO
@@ -26,6 +67,10 @@ void GameObjectCollections::RemoveEnemy(Enemy* enemy)
 void GameObjectCollections::RemoveItem(ItemPanel* itemPanel)
 {
 	//TODO
+}
+
+void GameObjectCollections::RemoveDoor(Door* door)
+{
 }
 
 //Gives all AI actors their turn. Paints all "tiles" to the screen
@@ -41,6 +86,11 @@ void GameObjectCollections::GiveAllActions()
 	for (int i = 0; i < _items.size(); i++)
 	{
 		globalMap.AddToLocation(_items[i].GetIcon(), _items[i].GetXPos(), _items[i].GetYPos());
+	}
+
+	for (int i = 0; i < _doors.size(); i++)
+	{
+		globalMap.AddToLocation(_doors[i].GetIcon(), _doors[i].GetXPos(), _doors[i].GetYPos());
 	}
 }
 
@@ -65,8 +115,29 @@ void GameObjectCollections::ClearMessages()
 	_messages = "";
 }
 
-//sounded fun messing around with generics, but i might just change this to seperate Get Methods.
-template<class myType> myType GameObjectCollections::GetObjectAtPosition(int, int)
+Door* GameObjectCollections::GetDoorAtPosition(int x, int y)
 {
-	return myType();
+	for (int i = 0; i < _doors.size(); i++)
+	{
+		if (_doors[i].GetXPos() == x && _doors[i].GetYPos() == y)
+			return &_doors[i];
+	}
+	return nullptr;
 }
+
+
+
+//sounded fun messing around with generics, but i might just change this to seperate Get Methods.
+//template<class myType> myType* GameObjectCollections::GetObjectAtPosition(int x, int y)
+//{
+//	if (myType == Door)
+//	{
+//		for (int i = 0; i < _doors.size(); i++)
+//		{
+//			if (_doors[i].GetXPos() == x && _doors[i].GetYPos() == y)
+//				return _doors[i];
+//		}
+//	}
+//
+//	return nullptr;
+//}

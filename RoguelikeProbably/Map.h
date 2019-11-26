@@ -23,10 +23,14 @@ public://These are unique in that they are statically accessable
 
 private:
 	string map;//Shoot for 30x20
+	string lastRoundMap;
 	string roundMap;
 
-	int ConvertXYToActualStringPosition(int,int) const;
-	CellType GetCellType(char) const;
+	int ConvertXYToStringPosition(int,int) const;
+	void ConvertStringPositionToXYPosition(int, int&, int&);
+	
+
+	void RemoveDoorCharactersAndCreateDoorObjects();
 	
 public:
 	Map(string);
@@ -34,6 +38,7 @@ public:
 	void AddToLocation(char specificCharacter, int x, int y);
 	string GetMapOutput();
 	CellType GetCellType(int x, int y) const;
+	CellType GetCellType(char) const;
 	void RefreshMap();
 };
 

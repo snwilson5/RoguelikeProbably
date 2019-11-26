@@ -7,6 +7,8 @@
 #include "GameObjectCollections.h"
 using namespace std;
 
+//Created by Stevan Wilson
+
 #pragma region Method stubs
 void KeyDetection();
 void Repaint();
@@ -84,7 +86,9 @@ void PlayerArrowsPressed(int x, int y)
 {
 	int intendedX = gameObjects->character.GetXPos() + x;
 	int intendedY = gameObjects->character.GetYPos() - y;
-	Map::CellType type = gameObjects->globalMap.GetCellType(intendedX, intendedY);
+	Map::CellType type = gameObjects->GetCellType(intendedX, intendedY);
+	Door* targetDoor = nullptr;//Must be declared outside of the case.
+
 	//floor, door, item, enemy, player, wall
 	switch (type)
 	{
@@ -96,7 +100,14 @@ void PlayerArrowsPressed(int x, int y)
 
 	case Map::closedDoor:
 		//Open the door
-		gameObjects->character.Move(x, y);
+		targetDoor = gameObjects->GetDoorAtPosition(intendedX, intendedY);
+		if (targetDoor == nullptr)//<- What?
+			gameObjects->character.Move(x, y);
+		else
+		{
+			targetDoor->OpenDoor();
+			gameObjects->AddMessage("You opened the door.");
+		}
 		break;
 
 	case Map::item:
