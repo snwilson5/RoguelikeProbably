@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AreaContainer.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="GameObjectCollections.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -131,9 +132,10 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="PanelObject.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="TestMaps.cpp" />
+    <ClCompile Include="GameMaps.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AreaContainer.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="GameObjectCollections.h" />
     <ClInclude Include="Enemy.h" />

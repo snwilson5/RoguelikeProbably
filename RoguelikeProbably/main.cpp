@@ -2,7 +2,7 @@
 #include <iostream>
 #include <windows.h>
 #include <winuser.h>
-#include "TestMaps.cpp"
+#include "GameMaps.cpp"
 #include "Player.h"
 #include "GameObjectCollections.h"
 using namespace std;
@@ -24,17 +24,19 @@ int main()
 	//CharacterPrint();
 	//char c239 = (char)239;
 	//return 0;
-	gameObjects->globalMap = Map(TestMaps::testMap2());
+	//gameObjects->globalMap = &Map(GameMaps::Map_0_0());
+	AreaContainer area1(GameMaps::Map_0_0());
+	gameObjects->LoadArea(&area1);
+	gameObjects->PaintToMapAndGiveAllActions(false);
 	gameObjects->PaintPlayer();
 
 	while (true)
 	{
 		Repaint();
 		KeyDetection();//Player Action
-		gameObjects->GiveAllActions();//Everything Else
+		gameObjects->PaintToMapAndGiveAllActions(true);//Everything Else
 	}
 }
-
 
 void KeyDetection()
 {
@@ -74,10 +76,10 @@ void KeyDetection()
 void Repaint()
 {
 	system("cls");
-	cout << gameObjects->globalMap.GetMapOutput();
+	cout << gameObjects->globalMap->GetMapOutput();
 	//cout<<character.getCharacteristicsOutput()<<endl;
 	cout << gameObjects->GetMessages();
-	gameObjects->globalMap.RefreshMap();
+	gameObjects->globalMap->RefreshMap();
 	gameObjects->ClearMessages();
 	Sleep(100);//This was processing too quickly and detecting the same key press multiple times. Slowed it for 1/10th of a second
 }
@@ -109,6 +111,9 @@ void PlayerArrowsPressed(int x, int y)
 			gameObjects->AddMessage("You opened the door.");
 		}
 		break;
+	case Map::lockedDoor:
+		gameObjects->AddMessage("That door is locked.");
+		break;
 
 	case Map::item:
 		//move
@@ -123,12 +128,32 @@ void PlayerArrowsPressed(int x, int y)
 		//What?
 		break;
 
+	case Map::bed:
+		gameObjects->AddMessage("You see your bed.\n");
+		break;
+
+	case Map::tree:
+		gameObjects->AddMessage("There's a tree in your way.\n");
+		break;
+
 	case Map::wall:
 		gameObjects->AddMessage("A Wall blocks your path.\n");
 		break;
 
+	case Map::caveWall:
+		gameObjects->AddMessage("You see the wall of a cave. It's slightly damp.\n");
+		break;
+
 	case Map::theVoid:
 		gameObjects->AddMessage("You would fall into an endless void.\n");
+		break;
+		
+	case Map::mountain:
+		gameObjects->AddMessage("These mountains are impassable.\n");
+		break;
+
+	case Map::gameComplete:
+
 		break;
 	}
 }

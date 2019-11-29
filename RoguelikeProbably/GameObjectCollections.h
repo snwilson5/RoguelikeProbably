@@ -5,22 +5,23 @@
 #include "Map.h"
 #include "Player.h"
 #include "Door.h"
+#include "AreaContainer.h"
 using namespace std;
 
 //This class manages all current
 class GameObjectCollections
 {
 private:
-	vector<Enemy> _enemies; //Enemies on screen
-	vector<ItemPanel> _items; //Items on screen
-	vector<Door> _doors;
+	vector<Enemy>* _enemies; //Enemies on screen
+	vector<ItemPanel>* _items; //Items on screen
+	vector<Door>* _doors;
 	static GameObjectCollections* instance;
 	GameObjectCollections();
 	string _messages;
 
 public:
-	Map globalMap;
-	Player character = Player(2,12);
+	Map* globalMap;
+	Player character = Player(6,4);
 
 	static GameObjectCollections* GetInstance()
 	{
@@ -29,6 +30,8 @@ public:
 		return instance;
 	}
 	Map::CellType GetCellType(int x, int y);
+
+	void LoadArea(AreaContainer* area);
     
 	void AddActor(Enemy enemy);
 	void AddItem(ItemPanel item);
@@ -38,7 +41,7 @@ public:
 	void RemoveItem(ItemPanel* itemPanel);
 	void RemoveDoor(Door* door);
 
-	void GiveAllActions();
+	void PaintToMapAndGiveAllActions(bool bAllowActorsAction);
 	void PaintPlayer();
 
 	void AddMessage(string);

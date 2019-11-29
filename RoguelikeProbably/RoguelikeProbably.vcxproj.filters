@@ -36,10 +36,13 @@
     <ClCompile Include="GameObjectCollections.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestMaps.cpp">
+    <ClCompile Include="Door.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Door.cpp">
+    <ClCompile Include="GameMaps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AreaContainer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -66,6 +69,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Door.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AreaContainer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

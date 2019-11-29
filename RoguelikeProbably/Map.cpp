@@ -15,13 +15,13 @@ int Map::ConvertXYToStringPosition(int _x, int _y) const
 void Map::ConvertStringPositionToXYPosition(int pos, int& x, int& y)
 {
 	y = pos / MaxMapWidth;
-	x = (pos - y* MaxMapWidth) / 2;
+	x = (pos - y * MaxMapWidth) / 2;
 }
 
 Map::Map(string inMap)
 {
 	map = inMap;
-	RemoveDoorCharactersAndCreateDoorObjects();
+	//RemoveDoorCharactersAndCreateDoorObjects();
 	RefreshMap();
 }
 
@@ -56,21 +56,57 @@ Map::CellType Map::GetCellType(char c) const
 	{
 	case '@':
 		return Map::player;
+
 	case '#':
 		return Map::wall;
+
+	case 'C':
+		return Map::caveWall;
+
 	case '°':
 		return Map::theVoid;
+
+	case '¿':
+		return Map::lockedDoor;
+
 	case '?':
 		return Map::closedDoor;
+
 	case 'ï':
 		return Map::openDoor;
+
+	case 'M':
+		return Map::mountain;
+
+	case '>':
+	case '<':
+	case '^':
+	case 'v':
+		return Map::mapChanger;
+		break;
+
+	case '[':
+	case ']':
+		return Map::bed;
+
+	case 'T':
+		return Map::tree;
+
+	case '¥':
+		return Map::plant;
+
+	case '|'://Weapon
+	case '0'://Potion
+		return Map::item;
+
 	default:
 		return Map::floor;
 	}
 }
 
-void Map::RemoveDoorCharactersAndCreateDoorObjects()
+vector<Door> Map::RemoveDoorCharactersAndCreateDoorObjects()
 {
+	vector<Door> doors;
 	for (int i = 0; i < map.length(); i++)
 	{
 		CellType currentType = GetCellType(map[i]);
@@ -81,7 +117,8 @@ void Map::RemoveDoorCharactersAndCreateDoorObjects()
 			int y = 0;
 			ConvertStringPositionToXYPosition(i, x, y);
 			Door door(x, y, currentType == openDoor);
-			GameObjectCollections::GetInstance()->AddDoor(door);
+			doors.push_back(door);
 		}
 	}
+	return doors;
 }
