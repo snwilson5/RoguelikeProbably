@@ -22,3 +22,27 @@ void Player::OverridePosition(int x, int y)
 	_xPos = x;
 	_yPos = y;
 }
+
+int Player::GetCurrentHealth()
+{
+	return current_health;
+}
+
+int Player::GetMaxHealth()
+{
+	return max_health;
+}
+
+int Player::GetStrength()
+{
+	return _damage;
+}
+
+void Player::ChangeHealth(int amount)
+{
+	current_health += amount;
+	if (current_health > max_health)
+		current_health = max_health;
+	if (current_health < 0)
+		current_health = 0;
+}

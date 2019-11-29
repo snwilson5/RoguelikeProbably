@@ -11,12 +11,12 @@ public:
 		 string map =  "M M M M M M M M M M M M M M M M M M M M M M M M M M M M M M\n";
 			    map += "M M M M M M                         T                     >\n";
 				map += "M M                     T                                 >\n";
-				map += "M     # # # # # # #                                 T     >\n";
+				map += "M     # # # # # # #               g                 T     >\n";
 				map += "M     #[]         #                                       >\n";
 				map += "M     #           #                                       >\n";
 				map += "M     #           #                                       >\n";
 				map += "M     #           #           T                 T         >\n";
-				map += "M     #           #                                       >\n";
+				map += "M     #           #               ê                       >\n";
 				map += "M     # # # ? # # #                                       >\n";
 				map += "M M                                                       >\n";
 				map += "M M                       T                               >\n";

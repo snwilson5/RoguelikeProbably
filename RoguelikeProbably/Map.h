@@ -2,6 +2,7 @@
 #include "Door.h"
 #include <string>
 #include <vector>
+#include "Enemy.h"
 using namespace std;
 
 
@@ -18,7 +19,7 @@ class Map
 
 public://These are unique in that they are statically accessable
 
-	enum CellType { floor, plant, openDoor, item, mapUp, mapDown, mapLeft, mapRight, gameComplete, enemy, player, closedDoor, lockedDoor, bed, tree, wall, caveWall, mountain, theVoid };
+	enum CellType { floor, plant, openDoor, item, enemy, mapUp, mapDown, mapLeft, mapRight, gameComplete,  player, closedDoor, lockedDoor, bed, tree, wall, caveWall, mountain, theVoid };
 	static const int MaxMapLength = 20;
 	//This seems to be an oddity. Adding an extra space so that the map screen height and width "match"
 	static const int MaxMapWidth = 60;//Extra character for new line character \n 
@@ -43,5 +44,6 @@ public:
 	CellType GetCellType(char) const;
 	void RefreshMap();
 	vector<Door> RemoveDoorCharactersAndCreateDoorObjects();
+	vector<Enemy> RemoveEnemyCharactersAndCreateEnemyObjects();
 };
 

@@ -112,8 +112,8 @@ void GameObjectCollections::PaintPlayer()
 
 void GameObjectCollections::AddMessage(string message)
 {
-	_messages += "  ";//2 spaces between messages for now. May change to new line
 	_messages += message;
+	_messages += "  ";//2 spaces between messages for now. May change to new line
 }
 
 string GameObjectCollections::GetMessages() const
@@ -183,6 +183,21 @@ Door* GameObjectCollections::GetDoorAtPosition(int x, int y)
 			return &_doors->at(i);
 	}
 	return nullptr;
+}
+
+Enemy* GameObjectCollections::GetEnemyAtPosition(int x, int y)
+{
+	for (int i = 0; i < _enemies->size(); i++)
+	{
+		if (_enemies->at(i).GetXPos() == x && _enemies->at(i).GetYPos() == y)
+			return &_enemies->at(i);
+	}
+	return nullptr;
+}
+
+double GameObjectCollections::GetDistance(PanelObject a, PanelObject b)
+{
+	return sqrt(pow(b.GetXPos() - b.GetYPos(), 2) + pow(b.GetYPos() - a.GetYPos(), 2));
 }
 
 //sounded fun messing around with generics, but i might just change this to seperate Get Methods.

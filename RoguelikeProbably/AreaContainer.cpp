@@ -4,6 +4,7 @@ AreaContainer::AreaContainer(string map)
 {
 	_map = map;
 	_doors = _map.RemoveDoorCharactersAndCreateDoorObjects();
+	_enemies = _map.RemoveEnemyCharactersAndCreateEnemyObjects();
 }
 
 Map* AreaContainer::GetMap()

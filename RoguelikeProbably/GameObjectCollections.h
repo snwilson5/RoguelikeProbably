@@ -56,7 +56,9 @@ public:
 	void SwitchMaps(int changeX, int changeY);
 
 	Door* GetDoorAtPosition(int, int);
+	Enemy* GetEnemyAtPosition(int x, int y);
 
+	double GetDistance(PanelObject a, PanelObject b);
 
 };
 

@@ -18,11 +18,12 @@ void CharacterPrint();
 
 
 static GameObjectCollections* gameObjects = GameObjectCollections::GetInstance();
+int numberOfTurns = 0;
 
 int main()
 {
 	//CharacterPrint();
-	//char c157 = (char)157;
+	//char c234 = (char)234;
 	//char c = '';
 	//return 0;
 	//gameObjects->globalMap = &Map(GameMaps::Map_0_0());
@@ -78,7 +79,9 @@ void Repaint()
 {
 	system("cls");
 	cout << gameObjects->globalMap->GetMapOutput();
-	//cout<<character.getCharacteristicsOutput()<<endl;
+	cout << "Turns: " << numberOfTurns++
+		<< "   Health: " << gameObjects->character.GetCurrentHealth() << "/" << gameObjects->character.GetMaxHealth()
+		<< "   Strength: " << gameObjects->character.GetStrength() << endl;
 	cout << gameObjects->GetMessages();
 	gameObjects->globalMap->RefreshMap();
 	gameObjects->ClearMessages();
@@ -91,7 +94,7 @@ void PlayerArrowsPressed(int x, int y)
 	int intendedY = gameObjects->character.GetYPos() - y;
 	Map::CellType type = gameObjects->GetCellType(intendedX, intendedY);
 	Door* targetDoor = nullptr;//Must be declared outside of the case.
-
+	Enemy* enemy = nullptr;
 	//floor, door, item, enemy, player, wall
 	switch (type)
 	{
@@ -139,7 +142,14 @@ void PlayerArrowsPressed(int x, int y)
 		break;
 
 	case Map::enemy:
-		//Attack Here
+		enemy = gameObjects->GetEnemyAtPosition(intendedX, intendedY);
+		enemy->ChangeHealth(-gameObjects->character.GetStrength());
+		gameObjects->AddMessage("You did " + to_string(gameObjects->character.GetStrength()) + " damage to the " + enemy->GetName() + ".");
+		if (enemy->GetCurrentHealth() <= 0)
+		{
+			gameObjects->AddMessage("You killed the " + enemy->GetName());
+			gameObjects->RemoveEnemy(enemy);
+		}
 		break;
 
 	case Map::player:
@@ -165,13 +175,14 @@ void PlayerArrowsPressed(int x, int y)
 	case Map::theVoid:
 		gameObjects->AddMessage("You would fall into an endless void.\n");
 		break;
-		
+
 	case Map::mountain:
 		gameObjects->AddMessage("These mountains are impassable.\n");
 		break;
 
 	case Map::gameComplete:
-
+		cout << endl << endl << endl << "You won!!" << endl;
+		exit(EXIT_SUCCESS);
 		break;
 	}
 }

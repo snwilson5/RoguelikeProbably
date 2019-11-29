@@ -101,6 +101,10 @@ Map::CellType Map::GetCellType(char c) const
 	case '0'://Potion
 		return Map::item;
 
+	case 'g':
+	case 'ê':
+		return Map::enemy;
+
 	default:
 		return Map::floor;
 	}
@@ -123,4 +127,37 @@ vector<Door> Map::RemoveDoorCharactersAndCreateDoorObjects()
 		}
 	}
 	return doors;
+}
+
+vector<Enemy> Map::RemoveEnemyCharactersAndCreateEnemyObjects()
+{
+	vector<Enemy> enemies;
+	for (int i = 0; i < map.length(); i++)
+	{
+		CellType currentType = GetCellType(map[i]);
+		if (currentType == enemy)
+		{
+			char enemyCharacter = map[i];
+			map[i] = ' ';
+			int x = 0;
+			int y = 0;
+			ConvertStringPositionToXYPosition(i, x, y);
+			Enemy* curEnemy = nullptr;
+			switch (enemyCharacter)
+			{
+			case 'g':
+				curEnemy = new Enemy(x, y, enemyCharacter, Enemy::oblivious, "Goblin", 2, 5);
+				break;
+			case 'ê':
+				curEnemy = new Enemy(x, y, enemyCharacter, Enemy::oblivious, "Slime", 1, 7);
+				break;
+			}
+			if (curEnemy != nullptr)
+			{
+				enemies.push_back(*curEnemy);
+				delete(curEnemy);
+			}
+		}
+	}
+	return enemies;
 }

@@ -8,18 +8,26 @@ using namespace std;
 
 class Enemy : public IAutonymousActor, public PanelObject
 {
+public:
+	enum AIType{passive, oblivious, aggressive};
 private:
 	string _name;
-	char _icon;
+	AIType _type;
 
-	int strength;
-	int constitution;
-	int dexterity;
+	int _strength;
+	int _health;
+	//int dexterity;
+
+	void ActOblivious();
+	void MoveRandom();
 
 public:
-	Enemy(int xPos, int yPos, char icon);
+	Enemy(int xPos, int yPos, char icon, AIType type, string name, int strength, int health);
 
 	void TakeAction();
+	void ChangeHealth(int amount);
+	int GetCurrentHealth();
+	string GetName();
 
 };
 
