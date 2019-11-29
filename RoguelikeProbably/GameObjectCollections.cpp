@@ -5,7 +5,7 @@ using namespace std;
 GameObjectCollections* GameObjectCollections::instance;
 GameObjectCollections::GameObjectCollections()
 {
-	//TODO
+	LoadMapsAndFirstArea();
 }
 
 Map::CellType GameObjectCollections::GetCellType(int x, int y)
@@ -124,6 +124,55 @@ string GameObjectCollections::GetMessages() const
 void GameObjectCollections::ClearMessages()
 {
 	_messages = "";
+}
+
+void GameObjectCollections::SwitchMaps(int changeX, int changeY)
+{
+	currentAreaX += changeX;
+	currentAreaY += changeY;
+	LoadArea(areas[currentAreaX][currentAreaY]);
+
+	int playerCurrentX = character.GetXPos();
+	int playerCurrentY = character.GetYPos();
+
+	int playerNewX = 0;
+	int playerNewY = 0;
+
+	if (changeX > 0)
+	{
+		playerNewX = 1;
+		playerNewY = playerCurrentY;
+	}
+	else if (changeX < 0)
+	{
+		playerNewX = 28;
+		playerNewY = playerCurrentY;
+	}
+	else if (changeY > 0)
+	{
+		playerNewX = playerCurrentX;
+		playerNewY = 1;
+	}
+	else if (changeY < 0)
+	{
+		playerNewX = playerCurrentX;
+		playerNewY = 18;
+	}
+	character.OverridePosition(playerNewX, playerNewY);
+}
+
+void GameObjectCollections::LoadMapsAndFirstArea()
+{
+	areas[0][0] = new AreaContainer(GameMaps::Map_0_0());
+	areas[0][1] = new AreaContainer(GameMaps::Map_0_1());
+	areas[0][2] = new AreaContainer(GameMaps::Map_0_2());
+	areas[1][0] = new AreaContainer(GameMaps::Map_1_0());
+	areas[1][1] = new AreaContainer(GameMaps::Map_1_1());
+	areas[1][2] = new AreaContainer(GameMaps::Map_1_2());
+	areas[2][0] = new AreaContainer(GameMaps::Map_2_0());
+	areas[2][1] = new AreaContainer(GameMaps::Map_2_1());
+	areas[2][2] = new AreaContainer(GameMaps::Map_2_2());
+	LoadArea(areas[currentAreaX][currentAreaY]);
 }
 
 Door* GameObjectCollections::GetDoorAtPosition(int x, int y)

@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Door.h"
 #include "AreaContainer.h"
+#include "GameMaps.cpp"
 using namespace std;
 
 //This class manages all current
@@ -18,6 +19,10 @@ private:
 	static GameObjectCollections* instance;
 	GameObjectCollections();
 	string _messages;
+	AreaContainer* areas[3][3];
+	int currentAreaX = 0;
+	int currentAreaY = 0;
+	void LoadMapsAndFirstArea();
 
 public:
 	Map* globalMap;
@@ -48,9 +53,10 @@ public:
 	string GetMessages() const;
 	void ClearMessages();
 
+	void SwitchMaps(int changeX, int changeY);
+
 	Door* GetDoorAtPosition(int, int);
 
-	//template<class myType>	myType* GetObjectAtPosition(int, int);
 
 };
 

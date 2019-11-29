@@ -1,5 +1,5 @@
 #pragma once
-#include "PanelObject.h";
+#include "PanelObject.h"
 class ItemPanel:public PanelObject
 {
 

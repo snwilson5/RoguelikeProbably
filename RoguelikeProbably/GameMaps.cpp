@@ -30,72 +30,72 @@ public:
 				map += "M M M M v v v v v v v v v v v v v v v v v v v v v v v v v  \n";
 		 return map;
 	}
-	static string Map_0_1()
+	static string Map_1_0()
 	{
 		string  map =  "M M M M M M M M M M M M M M M M M M M M M M M M M M M M M M\n";
 			    map += "<                                                         >\n";
-		        map += "<     T   # # # #     # # # #     ¥         T       ¥     >\n";
+		        map += "<     T   # # # #     # # # #              T            >\n";
 				map += "<         #     #     #     #                             >\n";
-				map += "<   ¥     #     #     #     #           # # # # # # #     >\n";
+				map += "<        #     #     #     #           # # # # # # #     >\n";
 				map += "<         # # ? #     # # ï #           #           #     >\n";
 				map += "<         T                       T     #           #     >\n";
-				map += "<                            ¥          #           #     >\n";
-				map += "<     ¥                                 #           #     >\n";
+				map += "<                                      #           #     >\n";
+				map += "<                                      #           #     >\n";
 				map += "<                                       ï           #     >\n";
-				map += "<                     ¥                 #           #     >\n";
-				map += "<         ¥                             #           #     >\n";
+				map += "<                                      #           #     >\n";
+				map += "<                                      #           #     >\n";
 				map += "<                                 T     #           #     >\n";
 				map += "<         # #   #     # # ¿ #           #           #     >\n";
-				map += "<         #     #     #     #     ¥     #           #     >\n";
+				map += "<         #     #     #     #          #           #     >\n";
 				map += "<         #     #     #     #           # # # # # # #     >\n";
-				map += "<    ¥    # # # #     # # # #                             >\n";
-				map += "<                       T             ¥           ¥       >\n";
+				map += "<        # # # #     # # # #                             >\n";
+				map += "<                       T                               >\n";
 				map += "<                                                         >\n";
 				map += "  v v v v v v v v v v v v v v v v v v v v v v v v v v v v  \n";
 		return  map;
 	}
 
-	static string Map_0_2()
+	static string Map_2_0()
 	{
 		string map =  "M M M M M M M M M M M M M M M M M M M M M M M M M M M M M M\n";
 			   map += "<                     T       M M M M M C C C C M M M M M M\n";
 			   map += "<                               M M M M C |   C C C C M M M\n";
 			   map += "<       T                         M M M C           C M M M\n";
-			   map += "<   T       ¥             T           M C C C C C   C M M M\n";
+			   map += "<   T                    T           M C C C C C   C M M M\n";
 			   map += "<                                       M M M M C   C M M M\n";
-			   map += "<     ¥           T                       M M M C   C M M M\n";
-			   map += "<                                 ¥           M C ? C M M M\n";
-			   map += "<         T           ¥     T                 M M   M M M M\n";
+			   map += "<                T                       M M M C   C M M M\n";
+			   map += "<                                            M C ? C M M M\n";
+			   map += "<         T                T                 M M   M M M M\n";
 			   map += "<                                                   M M M M\n";
-			   map += "<                             ¥                       M M M\n";
+			   map += "<                                                    M M M\n";
 			   map += "<       T                             T               M M M\n";
-			   map += "< ¥                                                   M M M\n";
+			   map += "<                                                    M M M\n";
 			   map += "<                     T                                 M M\n";
-			   map += "<                 ¥               ¥                     M M\n";
+			   map += "<                                                     M M\n";
 			   map += "<                           T                   T       M M\n";
-			   map += "<     T       ¥        ¥                                M M\n";
-			   map += "<   ¥              ¥          ¥           T             M M\n";
+			   map += "<     T                                               M M\n";
+			   map += "<                                      T             M M\n";
 			   map += "<                                                       M M\n";
 			   map += "  v v v v v v v v v v v v v v v v v v v v v v v v v v v M M\n";
 		return map;
 	}
 
-	static string Map_1_0()
+	static string Map_0_1()
 	{
 		string map  = "M M M M ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^  \n";
-			   map += "M M M M     ¥                                             >\n";
-			   map += "M M M M M         T               ¥                       >\n";
-			   map += "M M M M M     ¥                                     ¥     >\n";
-			   map += "M M M M M M               ¥               ¥               >\n";
+			   map += "M M M M                                                  >\n";
+			   map += "M M M M M         T                                      >\n";
+			   map += "M M M M M                                               >\n";
+			   map += "M M M M M M                                             >\n";
 			   map += "M M M M M M M M             T           T                 >\n";
 			   map += "M M M M M M M M M     T                                   >\n";
-			   map += "M M M M M M M M M M               ¥           T           >\n";
-			   map += "M M M M M M M M M M M                    ¥                >\n";
+			   map += "M M M M M M M M M M                          T           >\n";
+			   map += "M M M M M M M M M M M                                    >\n";
 			   map += "M M M M M M M M M M M M M             T                   >\n";
-			   map += "M M M M M M M M M M M M M M                     ¥         >\n";
+			   map += "M M M M M M M M M M M M M M                              >\n";
 			   map += "M M M M M M M M M M M M M M M M               T           >\n";
 			   map += "M M M M M M M M M M M M M M M M M                         >\n";
-			   map += "M # # # # # # # M M M M M M M M M M M M             ¥     >\n";
+			   map += "M # # # # # # # M M M M M M M M M M M M                  >\n";
 			   map += "M #           # M M M M M M M M M M M M M M M             >\n";
 			   map += "M #           # M M M M M M M M M M M M M M M M M M M M M M\n";
 			   map += "M #           # M M M M M M M M M M M M M M M M M M M M M M\n";
@@ -109,53 +109,53 @@ public:
 	{
 		string map  = "  ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^  \n";
 			   map += "<                                                         >\n";
-			   map += "<       ¥          T                  ¥                   >\n";
+			   map += "<                 T                                     >\n";
 			   map += "<                                                         >\n";
-			   map += "<             ¥                 ¥             T           >\n";
+			   map += "<                                           T           >\n";
 			   map += "<     T                                                   >\n";
 			   map += "<                                                         >\n";
 			   map += "<                           T                             >\n";
 			   map += "<                                                         >\n";
-			   map += "<                 ¥                  T       ¥¥¥¥         >\n";
-			   map += "<                           ¥               ¥¥¥¥¥¥        >\n";
-			   map += "<           T                                   ¥¥¥¥¥     >\n";
-			   map += "<                                   ¥              ¥¥¥    >\n";
-			   map += "<                       ¥                          T      >\n";
+			   map += "<                                   T                >\n";
+			   map += "<                                                  >\n";
+			   map += "<           T                                        >\n";
+			   map += "<                                                     >\n";
+			   map += "<                                                 T      >\n";
 			   map += "<                                                         >\n";
-			   map += "M M M M M       ¥                                         >\n";
-			   map += "M M M M M M               T       ¥                       >\n";
+			   map += "M M M M M                                                >\n";
+			   map += "M M M M M M               T                              >\n";
 			   map += "M M M M M M M                         T                   >\n";
 			   map += "M M M M M M M                                             >\n";
 			   map += "M M M M M M M v v v v v v v v v v v v v v v v v v v v v v  \n";
 		return map;
 	}
 
-	static string Map_1_2()
+	static string Map_2_1()
 	{
 		string map =  "  ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ M M\n";
-			   map += "<                             ¥             ¥¥          M M\n";
-			   map += "<     T           ¥         T             ¥¥¥¥¥         M M\n";
-			   map += "<                                           ¥¥¥¥        M M\n";
-			   map += "<                                         ¥¥¥¥          M M\n";
+			   map += "<                                                    M M\n";
+			   map += "<     T                    T                      M M\n";
+			   map += "<                                                   M M\n";
+			   map += "<                                                   M M\n";
 			   map += "<           T                     M M           T       M M\n";
 			   map += "<                             M M M M M                   M\n";
-			   map += "<                    ¥      M M M M M M                   M\n";
+			   map += "<                          M M M M M M                   M\n";
 			   map += "<                             M M M M M     T             M\n";
-			   map += "<             ¥                   T                       M\n";
+			   map += "<                                T                       M\n";
 			   map += "<   T                                                     M\n";
 			   map += "<                               M M M                     M\n";
-			   map += "<       ¥                         M M M                   M\n";
-			   map += "<                 T         ¥       M M                   M\n";
+			   map += "<                                M M M                   M\n";
+			   map += "<                 T                M M                   M\n";
 			   map += "<                                                         M\n";
 			   map += "<         T                               T               M\n";
 			   map += "<                       T                                 M\n";
-			   map += "<                   ¥                               T     M\n";
+			   map += "<                                                  T     M\n";
 			   map += "<                                                         M\n";
 			   map += "  v v v v v v v v v v v v v v v v v v v v v v v v v v v v  \n";
 		return map;
 	}
 
-	static string Map_2_0()
+	static string Map_0_2()
 	{
 		string map  = "M M M C ^ C C C C C C C C C M M M M M M M M M M M M M M M M\n";
 			   map += "M M M C   C C             C M M M M M M M M M M M M M M M M\n";
@@ -180,27 +180,27 @@ public:
 		return map;
 	}
 
-	static string Map_2_1()
+	static string Map_1_2()
 	{
 		string map  = "M M M M M M M ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^  \n";
-			   map += "M M M M M M M       ¥¥¥¥¥                   ¥             >\n";
-			   map += "M M M M M M M M        ¥¥¥¥¥                        T     >\n";
+			   map += "M M M M M M M                                       >\n";
+			   map += "M M M M M M M M                                T     >\n";
 			   map += "M M M M M M M M         T                                 >\n";
-			   map += "M M M M M M M M                             T   ¥         >\n";
+			   map += "M M M M M M M M                             T            >\n";
 			   map += "M M M M M M M M                   T                       >\n";
-			   map += "M M M M M M           ¥                                 ¥ >\n";
+			   map += "M M M M M M                                             >\n";
 			   map += "M M M M M M                                       T       >\n";
 			   map += "C C C M               T                                   >\n";
-			   map += "<   ?                               T                 ¥   >\n";
-			   map += "<   ?                       ¥               ¥             >\n";
+			   map += "<   ?                               T                    >\n";
+			   map += "<   ?                                                   >\n";
 			   map += "C C C M                                               T   >\n";
 			   map += "M M M M                         T                         >\n";
 			   map += "M M M M M                                                 >\n";
 			   map += "M M M M M         T                     T                 >\n";
-			   map += "M M M M                             ¥               T     >\n";
-			   map += "M M M     T               T            ¥¥¥                >\n";
-			   map += "M M M                                  ¥T¥                >\n";
-			   map += "M M M M         T                      ¥¥¥          ¥     >\n";
+			   map += "M M M M                                            T     >\n";
+			   map += "M M M     T               T                            >\n";
+			   map += "M M M                                  T                >\n";
+			   map += "M M M M         T                                     >\n";
 			   map += "M M M M M M M M M M M M M M M M M M M M M M M M M M M M M M\n";
 		return map;
 	}

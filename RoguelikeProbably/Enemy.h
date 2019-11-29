@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "IAutonymousActor.h"
-#include "PanelObject.h";
+#include "PanelObject.h"
 
 using namespace std;
 

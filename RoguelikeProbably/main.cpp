@@ -22,11 +22,12 @@ static GameObjectCollections* gameObjects = GameObjectCollections::GetInstance()
 int main()
 {
 	//CharacterPrint();
-	//char c239 = (char)239;
+	//char c157 = (char)157;
+	//char c = '';
 	//return 0;
 	//gameObjects->globalMap = &Map(GameMaps::Map_0_0());
-	AreaContainer area1(GameMaps::Map_0_0());
-	gameObjects->LoadArea(&area1);
+	//AreaContainer area1(GameMaps::Map_0_0());
+	//gameObjects->LoadArea(&area1);
 	gameObjects->PaintToMapAndGiveAllActions(false);
 	gameObjects->PaintPlayer();
 
@@ -111,6 +112,7 @@ void PlayerArrowsPressed(int x, int y)
 			gameObjects->AddMessage("You opened the door.");
 		}
 		break;
+
 	case Map::lockedDoor:
 		gameObjects->AddMessage("That door is locked.");
 		break;
@@ -118,6 +120,22 @@ void PlayerArrowsPressed(int x, int y)
 	case Map::item:
 		//move
 		gameObjects->character.Move(x, y);
+		break;
+
+	case Map::mapUp:
+		gameObjects->SwitchMaps(0, -1);
+		break;
+
+	case Map::mapDown:
+		gameObjects->SwitchMaps(0, 1);
+		break;
+
+	case Map::mapLeft:
+		gameObjects->SwitchMaps(-1, 0);
+		break;
+
+	case Map::mapRight:
+		gameObjects->SwitchMaps(1, 0);
 		break;
 
 	case Map::enemy:

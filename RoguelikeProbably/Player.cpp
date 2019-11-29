@@ -16,3 +16,9 @@ void Player::Move(int x, int y)
 	if (x != 0)
 		_xPos += x >= 0 ? 1 : -1;
 }
+
+void Player::OverridePosition(int x, int y)
+{
+	_xPos = x;
+	_yPos = y;
+}

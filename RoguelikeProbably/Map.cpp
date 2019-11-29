@@ -79,11 +79,13 @@ Map::CellType Map::GetCellType(char c) const
 		return Map::mountain;
 
 	case '>':
+		return Map::mapRight;
 	case '<':
+		return Map::mapLeft;
 	case '^':
+		return Map::mapUp;
 	case 'v':
-		return Map::mapChanger;
-		break;
+		return Map::mapDown;
 
 	case '[':
 	case ']':
