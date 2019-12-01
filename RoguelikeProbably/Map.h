@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "Enemy.h"
+#include "ItemPanel.h"
 using namespace std;
 
 
@@ -45,5 +46,6 @@ public:
 	void RefreshMap();
 	vector<Door> RemoveDoorCharactersAndCreateDoorObjects();
 	vector<Enemy> RemoveEnemyCharactersAndCreateEnemyObjects();
+	vector<ItemPanel> RemoveItemCharactersAndCreateItemObjects();
 };
 

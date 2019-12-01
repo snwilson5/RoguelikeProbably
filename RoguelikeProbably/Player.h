@@ -17,5 +17,7 @@ public:
 		int GetMaxHealth();
 		int GetStrength();
 		void ChangeHealth(int amount);
+		void IncreaseStrength(int amount);
+		void IncreaseMaxHealth(int amount);
 };
 

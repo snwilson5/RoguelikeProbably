@@ -1,9 +1,19 @@
 #pragma once
 #include "PanelObject.h"
-class ItemPanel:public PanelObject
-{
+#include <string>
 
+using namespace std;
+class ItemPanel :public PanelObject
+{
 public:
-	ItemPanel(int xPos, int yPos, char icon);
+	enum itemType { strength, curHealth, maxHealth };
+private:
+	itemType _type;
+	int _magnitude;
+	string _description;
+public:
+	ItemPanel(int xPos, int yPos, char icon, itemType type, int magnitude, string description);
+	void UseItem();
+	string GetDescription();
 };
 

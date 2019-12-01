@@ -46,3 +46,14 @@ void Player::ChangeHealth(int amount)
 	if (current_health < 0)
 		current_health = 0;
 }
+
+void Player::IncreaseStrength(int amount)
+{
+	_damage += amount;
+}
+
+void Player::IncreaseMaxHealth(int amount)
+{
+	max_health += amount;
+	current_health += amount;
+}

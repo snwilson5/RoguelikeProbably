@@ -13,6 +13,7 @@ using namespace std;
 void KeyDetection();
 void Repaint();
 void PlayerArrowsPressed(int, int);
+void PlayerUsePressed();
 void CharacterPrint();
 #pragma endregion
 
@@ -23,7 +24,7 @@ int numberOfTurns = 0;
 int main()
 {
 	//CharacterPrint();
-	//char c234 = (char)234;
+	//char c = (char)232;
 	//char c = '';
 	//return 0;
 	//gameObjects->globalMap = &Map(GameMaps::Map_0_0());
@@ -35,6 +36,11 @@ int main()
 	while (true)
 	{
 		Repaint();
+		if (gameObjects->character.GetCurrentHealth() <= 0)
+		{
+			cout << endl << endl << endl << "Game Over! Please play again." << endl;
+			exit(EXIT_SUCCESS);
+		}
 		KeyDetection();//Player Action
 		gameObjects->PaintToMapAndGiveAllActions(true);//Everything Else
 	}
@@ -71,6 +77,16 @@ void KeyDetection()
 			PlayerArrowsPressed(1, 0);
 			bPressed = true;
 		}
+		else if (GetAsyncKeyState(VK_SPACE))
+		{
+			gameObjects->AddMessage("You wait a turn");
+			bPressed = true;
+		}
+		else if (GetAsyncKeyState(VK_RETURN))
+		{
+			PlayerUsePressed();
+			bPressed = true;
+		}
 	}
 	gameObjects->PaintPlayer();
 }
@@ -95,11 +111,13 @@ void PlayerArrowsPressed(int x, int y)
 	Map::CellType type = gameObjects->GetCellType(intendedX, intendedY);
 	Door* targetDoor = nullptr;//Must be declared outside of the case.
 	Enemy* enemy = nullptr;
+	ItemPanel* item = nullptr;
 	//floor, door, item, enemy, player, wall
 	switch (type)
 	{
 	case Map::floor:
 	case Map::openDoor:
+	case Map::plant:
 		//Move
 		gameObjects->character.Move(x, y);
 		break;
@@ -121,8 +139,9 @@ void PlayerArrowsPressed(int x, int y)
 		break;
 
 	case Map::item:
-		//move
+		item = gameObjects->GetItemAtPosition(intendedX, intendedY);
 		gameObjects->character.Move(x, y);
+		gameObjects->AddMessage("You see an " + item->GetDescription() + ".");
 		break;
 
 	case Map::mapUp:
@@ -181,13 +200,50 @@ void PlayerArrowsPressed(int x, int y)
 		break;
 
 	case Map::gameComplete:
+		if (gameObjects->AreThereEnemiesOnThisMap())
+		{
+			gameObjects->AddMessage("The dread knights must be defeated before continuing.");
+			break;
+		}
 		cout << endl << endl << endl << "You won!!" << endl;
 		exit(EXIT_SUCCESS);
 		break;
 	}
 }
 
-//Prints Every Ascii Character
+void PlayerUsePressed()
+{
+	int x = gameObjects->character.GetXPos();
+	int y = gameObjects->character.GetYPos();
+	Map::CellType type = gameObjects->GetCellType(x, y);
+	ItemPanel* item = nullptr;
+	switch (type)
+	{
+	case Map::item:
+		item = gameObjects->GetItemAtPosition(x, y);
+		if (item != nullptr)
+		{
+			item->UseItem();
+			gameObjects->RemoveItem(item);
+		}
+		break;
+
+	case Map::plant:
+		gameObjects->AddMessage("You see a plant.");
+		break;
+
+	case Map::openDoor:
+		gameObjects->AddMessage("You are in an open doorway.");
+		break;
+
+	default:
+		gameObjects->AddMessage("You see nothing of interest.");
+		break;
+	}
+}
+
+
+//Prints Every Ascii Character (Debug purposes)
 void CharacterPrint()
 {
 	for (int i = 0; i < 256; i++)

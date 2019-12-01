@@ -94,16 +94,23 @@ Map::CellType Map::GetCellType(char c) const
 	case 'T':
 		return Map::tree;
 
-	case '•':
+	case 'ù':
 		return Map::plant;
 
-	case '|'://Weapon
+	case '|'://Strength Increase
 	case '0'://Potion
+	case 'Ë'://Max Health Potion
 		return Map::item;
 
 	case 'g':
 	case 'Í':
+	case 'O':
+	case 'K':
+	case 'D':
 		return Map::enemy;
+
+	case '*':
+		return Map::gameComplete;
 
 	default:
 		return Map::floor;
@@ -151,6 +158,15 @@ vector<Enemy> Map::RemoveEnemyCharactersAndCreateEnemyObjects()
 			case 'Í':
 				curEnemy = new Enemy(x, y, enemyCharacter, Enemy::oblivious, "Slime", 1, 7);
 				break;
+			case 'O':
+				curEnemy = new Enemy(x, y, enemyCharacter, Enemy::oblivious, "Orc", 2, 5);
+				break;
+			case 'K':
+				curEnemy = new Enemy(x, y, enemyCharacter, Enemy::aggressive, "Black Knight", 2, 5);
+				break;
+			case 'D':
+				curEnemy = new Enemy(x, y, enemyCharacter, Enemy::aggressive, "Dread Knight", 4, 15);
+				break;
 			}
 			if (curEnemy != nullptr)
 			{
@@ -160,4 +176,40 @@ vector<Enemy> Map::RemoveEnemyCharactersAndCreateEnemyObjects()
 		}
 	}
 	return enemies;
+}
+
+vector<ItemPanel> Map::RemoveItemCharactersAndCreateItemObjects()
+{
+	vector<ItemPanel> items;
+	for (int i = 0; i < map.length(); i++)
+	{
+		CellType currentType = GetCellType(map[i]);
+		if (currentType == item)
+		{
+			char itemCharacter = map[i];
+			map[i] = ' ';
+			int x = 0;
+			int y = 0;
+			ConvertStringPositionToXYPosition(i, x, y);
+			ItemPanel* curItem = nullptr;
+			switch (itemCharacter)
+			{
+			case '|':
+				curItem = new ItemPanel(x, y, itemCharacter, ItemPanel::strength, 1, "Weapon Upgrade");
+				break;
+			case '0':
+				curItem = new ItemPanel(x, y, itemCharacter, ItemPanel::curHealth, 10, "Health Potion");
+				break;
+			case 'Ë':
+				curItem = new ItemPanel(x, y, itemCharacter, ItemPanel::maxHealth, 5, "Fortitude Potion");
+				break;
+			}
+			if (curItem != nullptr)
+			{
+				items.push_back(*curItem);
+				delete(curItem);
+			}
+		}
+	}
+	return items;
 }

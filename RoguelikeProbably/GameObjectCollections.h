@@ -57,8 +57,11 @@ public:
 
 	Door* GetDoorAtPosition(int, int);
 	Enemy* GetEnemyAtPosition(int x, int y);
+	ItemPanel* GetItemAtPosition(int x, int y);
 
-	double GetDistance(PanelObject a, PanelObject b);
+	int GetDistance(PanelObject a, PanelObject b);
+
+	bool AreThereEnemiesOnThisMap();
 
 };
 

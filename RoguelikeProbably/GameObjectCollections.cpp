@@ -70,17 +70,38 @@ void GameObjectCollections::AddDoor(Door door)
 
 void GameObjectCollections::RemoveEnemy(Enemy* enemy)
 {
-	//TODO
+	for (int i = 0; i < _enemies->size(); i++)
+	{
+		if (&_enemies->at(i) == enemy)
+		{
+			_enemies->erase(_enemies->begin() + i);
+			break;
+		}
+	}
 }
 
-void GameObjectCollections::RemoveItem(ItemPanel* itemPanel)
+void GameObjectCollections::RemoveItem(ItemPanel* item)
 {
-	//TODO
+	for (int i = 0; i < _items->size(); i++)
+	{
+		if (&_items->at(i) == item)
+		{
+			_items->erase(_items->begin() + i);
+			break;
+		}
+	}
 }
 
 void GameObjectCollections::RemoveDoor(Door* door)
 {
-	//TODO
+	for (int i = 0; i < _doors->size(); i++)
+	{
+		if (&_doors->at(i) == door)
+		{
+			_doors->erase(_doors->begin() + i);
+			break;
+		}
+	}
 }
 
 //Gives all AI actors their turn. Paints all "tiles" to the screen
@@ -195,9 +216,27 @@ Enemy* GameObjectCollections::GetEnemyAtPosition(int x, int y)
 	return nullptr;
 }
 
-double GameObjectCollections::GetDistance(PanelObject a, PanelObject b)
+ItemPanel* GameObjectCollections::GetItemAtPosition(int x, int y)
 {
-	return sqrt(pow(b.GetXPos() - b.GetYPos(), 2) + pow(b.GetYPos() - a.GetYPos(), 2));
+	for (int i = 0; i < _items->size(); i++)
+	{
+		if (_items->at(i).GetXPos() == x && _items->at(i).GetYPos() == y)
+			return &_items->at(i);
+	}
+	return nullptr;
+}
+
+int GameObjectCollections::GetDistance(PanelObject a, PanelObject b)
+{
+	//Eh. Too Complicated
+	//return sqrt(pow(b.GetXPos() - a.GetXPos(), 2) + pow(b.GetYPos() - a.GetYPos(), 2));
+	//Can only move ^><v anyways. Technically this is a more accurate representation of distance.
+	return abs(b.GetXPos() - a.GetXPos()) + abs(b.GetYPos() - a.GetYPos());
+}
+
+bool GameObjectCollections::AreThereEnemiesOnThisMap()
+{
+	return _enemies->size() > 0;
 }
 
 //sounded fun messing around with generics, but i might just change this to seperate Get Methods.

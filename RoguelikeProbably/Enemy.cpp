@@ -8,7 +8,7 @@ void Enemy::ActOblivious()//Only attack if player is right there.
 	{
 		int damage = (rand() % _strength) + 1;
 		gameObjects->character.ChangeHealth(-damage);
-		gameObjects->AddMessage(_name + " did " + to_string(damage) + " to you");
+		gameObjects->AddMessage(_name + " did " + to_string(damage) + " damage to you");
 	}
 	else
 		MoveRandom();
@@ -24,12 +24,16 @@ void Enemy::MoveRandom()
 	{
 	case 0:
 		intendedX++;
+		break;
 	case 1:
 		intendedX--;
+		break;
 	case 2:
 		intendedY++;
+		break;
 	case 3:
 		intendedY--;
+		break;
 	}
 	Map::CellType cell = gameObjects->GetCellType(intendedX, intendedY);
 	if ((int)cell < int(Map::enemy))//If it's allowed to occupy this space.
@@ -62,6 +66,15 @@ void Enemy::TakeAction()
 void Enemy::ChangeHealth(int amount)
 {
 	_health += amount;
+	if (_health <= 0)//I died. See if I drop a potion
+	{
+		if (rand() % 2)//0 or 1
+		{
+			GameObjectCollections* gameObjects = GameObjectCollections::GetInstance();
+			ItemPanel potionDrop = ItemPanel(GetXPos(), GetYPos(), '0', ItemPanel::curHealth, 10, "Health Potion");
+			gameObjects->AddItem(potionDrop);
+		}
+	}
 }
 
 int Enemy::GetCurrentHealth()

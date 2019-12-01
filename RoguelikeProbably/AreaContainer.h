@@ -22,7 +22,5 @@ public:
 	vector<Enemy>* GetEnemies();
 	vector<ItemPanel>* GetItems();
 	vector<Door>* GetDoors();
-
-
 };
 
