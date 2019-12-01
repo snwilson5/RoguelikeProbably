@@ -30,6 +30,8 @@ int main()
 	//gameObjects->globalMap = &Map(GameMaps::Map_0_0());
 	//AreaContainer area1(GameMaps::Map_0_0());
 	//gameObjects->LoadArea(&area1);
+	gameObjects->AddMessage("Welcome to ASCII Warrior.");
+	gameObjects->AddMessage("You have recieved word that your king is trapped in his throne room by two dread knights. You must rescue him.");
 	gameObjects->PaintToMapAndGiveAllActions(false);
 	gameObjects->PaintPlayer();
 
@@ -113,7 +115,7 @@ void PlayerArrowsPressed(int x, int y)
 	Enemy* enemy = nullptr;
 	ItemPanel* item = nullptr;
 	//floor, door, item, enemy, player, wall
-	switch (type)
+	switch (type)//Decides what happens depending on the type of tile
 	{
 	case Map::floor:
 	case Map::openDoor:

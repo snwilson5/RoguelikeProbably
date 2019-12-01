@@ -105,7 +105,7 @@ Map::CellType Map::GetCellType(char c) const
 	case 'g':
 	case 'ê':
 	case 'O':
-	case 'K':
+	case 'B':
 	case 'D':
 		return Map::enemy;
 
@@ -161,7 +161,7 @@ vector<Enemy> Map::RemoveEnemyCharactersAndCreateEnemyObjects()
 			case 'O':
 				curEnemy = new Enemy(x, y, enemyCharacter, Enemy::oblivious, "Orc", 2, 5);
 				break;
-			case 'K':
+			case 'B':
 				curEnemy = new Enemy(x, y, enemyCharacter, Enemy::aggressive, "Black Knight", 2, 5);
 				break;
 			case 'D':

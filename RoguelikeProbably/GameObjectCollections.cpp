@@ -134,7 +134,7 @@ void GameObjectCollections::PaintPlayer()
 void GameObjectCollections::AddMessage(string message)
 {
 	_messages += message;
-	_messages += "  ";//2 spaces between messages for now. May change to new line
+	_messages += "\n";//2 spaces between messages for now. May change to new line
 }
 
 string GameObjectCollections::GetMessages() const
