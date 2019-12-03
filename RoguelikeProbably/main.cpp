@@ -8,6 +8,7 @@
 using namespace std;
 
 //Created by Stevan Wilson
+/* Copyright (c) 2019 Stevan Wilson */
 
 #pragma region Method stubs
 void KeyDetection();
@@ -208,6 +209,8 @@ void PlayerArrowsPressed(int x, int y)
 			break;
 		}
 		cout << endl << endl << endl << "You won!!" << endl;
+		cout << "Thank you for playing!" << endl;
+		cout << "Written by Stevan Wilson." << endl;
 		exit(EXIT_SUCCESS);
 		break;
 	}
